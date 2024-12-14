@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Event Management Hub</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    body {
+      background:url("https://img.freepik.com/premium-photo/university-university-campus_551880-7792.jpg?semt=ais_hybrid") no-repeat;
+      backdrop-filter: blur(4px);
+      background-size: cover;
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .btn-get-started {
+      background: #4caf50;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-get-started:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature {
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature:hover{
+      scale: 1.05;
+      cursor: pointer;
+    }
+
+    .feature i {
+      font-size: 2rem;
+    }
+
+
+  </style>
+</head>
+<body>
+<header class="p-6">
+  <nav class="flex justify-between items-center">
+    <div class="text-xl font-bold">
+      <i class='bx bx-calendar'></i> Stybo Campus Event Hub
+    </div>
+    <a href="signup.html" class="btn-get-started">Get Started</a>
+  </nav>
+</header>
+
+<main class="flex flex-col items-center justify-center text-center h-[80vh] px-6">
+  <h1 class="hero-title mb-6">Discover & Participate in Campus Events</h1>
+  <p class="mb-8 max-w-lg">Join workshops, seminars, and club activities. Stay informed and manage your events efficiently, all in one place!</p>
+  <a href="signup.html" class="btn-get-started text-lg font-semibold">Get Started</a>
+</main>
+
+<section class="px-6 py-12 bg-white text-gray-900">
+  <div class="text-center mb-8">
+    <h2 class="text-3xl font-bold">Features</h2>
+    <p class="text-lg tet">What makes our Campus Event Hub amazing</p>
+  </div>
+  <div class="grid md:grid-cols-3 gap-6">
+    <!-- Feature 1 -->
+    <div class="feature">
+      <i class='bx bx-user-circle'></i>
+      <h3 class="mt-4 font-semibold">User Profiles</h3>
+      <p>Manage your events and preferences with ease.</p>
+    </div>
+    <!-- Feature 2 -->
+    <div class="feature">
+      <i class='bx bx-calendar-event'></i>
+      <h3 class="mt-4 font-semibold">Event Listings</h3>
+      <p>Explore upcoming events with complete details.</p>
+    </div>
+    <!-- Feature 3 -->
+    <div class="feature">
+      <i class='bx bx-shield'></i>
+      <h3 class="mt-4 font-semibold">Admin Tools</h3>
+      <p>Admins can create and manage events effortlessly.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="text-center py-4 bg-gray-900 text-white">
+  <p>© 2024 Campus Event Management Hub. All Rights Reserved.</p>
+  <p>Steven-George Apedoe</p>
+  <p>Academic City University College</p>
+</footer>
+<script src="https://cdn.tailwindcss.com"></script>
+
+</body>
+</html>

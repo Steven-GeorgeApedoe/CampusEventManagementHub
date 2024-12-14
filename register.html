@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="bg-blue-600 text-white shadow-md">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <a href="#" class="text-2xl font-bold">Navbar</a>
+      <div class="hidden md:flex space-x-6">
+        <a href="#" class="hover:text-gray-300">Home</a>
+        <a href="#" class="hover:text-gray-300">Events</a>
+        <a href="#" class="hover:text-gray-300">Calendar</a>
+        <div class="relative"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Registration Form -->
+<div class="container mx-auto my-12 px-6">
+  <h2 class="text-center text-3xl font-bold mb-8">Campus Event Management Hub - Register</h2>
+  <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-8">
+    <form id="registrationForm">
+      <div class="mb-4">
+        <label for="username" class="block text-gray-700 font-medium">Username</label>
+        <div class="flex items-center border border-gray-300 rounded-md">
+          <span class="input-group-text bg-gray-200 px-3 py-2"><i class="bx bx-user"></i></span>
+          <input type="text" id="username" class="form-control w-full px-4 py-2 border-0 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Username" required>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700 font-medium">Email</label>
+        <div class="flex items-center border border-gray-300 rounded-md">
+          <span class="input-group-text bg-gray-200 px-3 py-2"><i class="bx bx-envelope"></i></span>
+          <input type="email" id="email" class="form-control w-full px-4 py-2 border-0 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Email" required>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="block text-gray-700 font-medium">Password</label>
+        <div class="flex items-center border border-gray-300 rounded-md">
+          <span class="input-group-text bg-gray-200 px-3 py-2"><i class="bx bx-lock"></i></span>
+          <input type="password" id="password" class="form-control w-full px-4 py-2 border-0 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Password" required>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="preferences" class="block text-gray-700 font-medium">Event Preferences</label>
+        <select id="preferences" class="form-select block w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+          <option value="workshops">Workshops</option>
+          <option value="seminars">Seminars</option>
+          <option value="club activities">Club Activities</option>
+        </select>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none transform transition-all duration-300 hover:scale-105">Register</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal for Registration Success -->
+<div id="successModal" class="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center hidden">
+  <div class="bg-white p-6 rounded shadow-lg">
+    <h3 class="text-xl font-semibold text-center">You have been Registered Successfully!</h3>
+    <button onclick="closeModal()" class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 focus:outline-none">Go to Home</button>
+  </div>
+</div>
+
+<script>
+  // Handle form submission
+  document.getElementById('registrationForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Show success modal
+    document.getElementById('successModal').classList.remove('hidden');
+  });
+
+  // Close modal and redirect to Home page
+  function closeModal() {
+    // Redirect user to Home page
+    window.location.href = "http://localhost:63342/campusEventManagementFrontend/Home.html?_ijt=7d0fnq518vpe7jba5mbfggknj1&_ij_reload=RELOAD_ON_SAVE";
+  }
+</script>
+
+</body>
+</html>

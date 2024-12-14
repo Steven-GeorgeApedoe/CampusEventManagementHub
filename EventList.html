@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Events - Event List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <nav class="bg-blue-600 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-white text-2xl font-bold">Campus Event Hub</h1>
+      <div class="space-x-4">
+        <a href="Home.html" class="text-white hover:text-blue-200">Home</a>
+        <a href="profile.html" class="text-white hover:text-blue-200">Profile</a>
+        <button onclick="logout()" class="text-white hover:text-blue-200">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mx-auto mt-8 p-4">
+    <h2 class="text-3xl font-bold mb-6">Upcoming Events</h2>
+    <div id="eventList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Events will be dynamically inserted here -->
+    </div>
+  </main>
+
+  <script src="js/auth-check.js"></script>
+  <script src="js/eventList.js"></script>
+  <script>
+    function logout() {
+      localStorage.removeItem('token');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Campus Event Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-white text-2xl font-bold">Admin Dashboard</h1>
+            <div class="space-x-4">
+                <a href="FullCalender.html" class="text-white hover:text-blue-200">Calendar</a>
+                <a href="profile.html" class="text-white hover:text-blue-200">Profile</a>
+                <button onclick="logout()" class="text-white hover:text-blue-200">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto mt-8 p-4">
+        <!-- Event Creation Form -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-bold mb-4">Create New Event</h2>
+            <form id="eventForm" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-2">Event Name</label>
+                    <input type="text" id="eventName" required
+                           class="w-full p-2 border rounded">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Date</label>
+                    <input type="date" id="eventDate" required
+                           class="w-full p-2 border rounded">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Time</label>
+                    <input type="time" id="eventTime" required
+                           class="w-full p-2 border rounded">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Location</label>
+                    <input type="text" id="eventLocation" required
+                           class="w-full p-2 border rounded">
+                </div>
+                <div>
+                    <label class="block text-gray-700 mb-2">Capacity</label>
+                    <input type="number" id="eventCapacity" required
+                           class="w-full p-2 border rounded">
+                </div>
+                <button type="submit" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Create Event
+                </button>
+            </form>
+        </div>
+
+        <!-- Events List -->
+        <h2 class="text-2xl font-bold mb-4">Created Events</h2>
+        <div id="eventsList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Events will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg">
+            <h3 class="text-xl font-bold mb-4">Success!</h3>
+            <p>Event created successfully</p>
+            <button onclick="closeModal()" 
+                    class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg">
+            <h3 class="text-xl font-bold mb-4">Are you sure?</h3>
+            <p>Do you want to remove this event?</p>
+            <div class="mt-4 flex space-x-4">
+                <button id="confirmDelete" 
+                        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    Yes
+                </button>
+                <button onclick="closeDeleteModal()" 
+                        class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth-check.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

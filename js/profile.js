@@ -6,7 +6,7 @@ if (!localStorage.getItem('token')) {
 // Fetch user profile
 async function fetchProfile() {
     try {
-        const response = await fetch('http://localhost:5000/api/auth/profile', {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/profile`, {
             headers: {
                 'x-auth-token': localStorage.getItem('token')
             }
@@ -330,7 +330,7 @@ if (viewProfileBtn && editProfileBtn && profileModal && profileForm) {
 // Load profile data
 async function loadProfileData(editable) {
     try {
-        const response = await fetch('http://localhost:5000/api/auth/profile', {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/profile`, {
             headers: {
                 'x-auth-token': localStorage.getItem('token')
             }

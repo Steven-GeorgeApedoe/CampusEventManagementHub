@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "live-server --port=8080 --host=localhost --no-browser"
+    "start": "live-server --port=8080 --host=localhost --no-browser",
+    "build": "mkdir -p dist && [ -d pages ] && cp -r pages dist/ || true && [ -d js ] && cp -r js dist/ || true && [ -d css ] && cp -r css dist/ || true && cp index.html dist/",
+    "vercel-build": "npm run build"
   },
   "keywords": [],
   "author": "",

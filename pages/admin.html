@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Campus Event Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        admin: {
+                            primary: '#4F46E5',
+                            secondary: '#818CF8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-800 bg-clip-text text-transparent">
+                        Admin Dashboard
+                    </h1>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <span class="text-gray-600">Welcome, Admin</span>
+                    <div class="relative" id="profileDropdown">
+                        <button class="flex items-center space-x-2 text-gray-700 hover:text-admin-primary transition duration-150">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                            <span>Profile</span>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden">
+                            <button id="viewProfileBtn" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
+                                View Profile
+                            </button>
+                            <button id="editProfileBtn" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
+                                Edit Profile
+                            </button>
+                            <hr class="my-1">
+                            <button id="logoutBtn" class="block px-4 py-2 text-sm text-red-500 hover:bg-gray-100 w-full text-left">
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                    <button id="mainLogoutBtn" class="text-red-500 hover:text-red-700 font-medium transition duration-150">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-900">Event Management</h2>
+            <p class="mt-2 text-gray-600">Create and manage campus events</p>
+        </div>
+
+        <!-- Stats Section -->
+        <div id="statsContainer" class="mb-8">
+            <!-- Stats will be populated here -->
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Create Event Form -->
+            <div class="bg-white rounded-lg shadow-xl p-8 border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
+                <h2 class="text-xl font-semibold mb-6 text-gray-900">Create New Event</h2>
+                <form id="createEventForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700">Event Name</label>
+                        <input type="text" id="eventName" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-admin-primary focus:border-admin-primary transition-colors duration-200">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea id="eventDescription" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Date</label>
+                        <input type="date" id="eventDate" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Time</label>
+                        <input type="time" id="eventTime" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Location</label>
+                        <input type="text" id="eventLocation" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Type</label>
+                        <select id="eventType" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                            <option value="workshop">Workshop</option>
+                            <option value="seminar">Seminar</option>
+                            <option value="club">Club Activity</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Capacity</label>
+                        <input type="number" id="eventCapacity" required min="1"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-gradient-to-r from-admin-primary to-admin-secondary text-white py-3 px-4 rounded-md hover:opacity-90 transition-opacity duration-200 font-medium shadow-lg">
+                        Create Event
+                    </button>
+                </form>
+            </div>
+
+            <!-- Event List -->
+            <div class="bg-white rounded-lg shadow-xl p-8 border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
+                <h2 class="text-xl font-semibold mb-6 text-gray-900">Manage Events</h2>
+                <div class="mb-4">
+                    <div class="relative">
+                        <input type="text" id="searchEvents" placeholder="Search events..." 
+                            class="w-full rounded-md border-gray-300 shadow-sm focus:ring-admin-primary focus:border-admin-primary">
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-2 flex space-x-2">
+                        <button onclick="filterEvents('all')" 
+                            class="px-3 py-1 rounded-full text-sm bg-gray-200 hover:bg-gray-300 transition-colors duration-200">
+                            All
+                        </button>
+                        <button onclick="filterEvents('upcoming')"
+                            class="px-3 py-1 rounded-full text-sm bg-gray-200 hover:bg-gray-300 transition-colors duration-200">
+                            Upcoming
+                        </button>
+                    </div>
+                </div>
+                <div id="eventList" class="space-y-4 max-h-[600px] overflow-y-auto">
+                    <!-- Events will be populated here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50">
+        <div class="min-h-screen flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900">Profile Details</h2>
+                    <button id="closeProfileModal" class="text-gray-400 hover:text-gray-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <form id="profileForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" id="profileName" required
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-admin-primary focus:border-admin-primary">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="profileEmail" required disabled
+                            class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Change Password</label>
+                        <input type="password" id="newPassword" placeholder="Leave blank to keep current password"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-admin-primary focus:border-admin-primary">
+                    </div>
+                    <div class="flex justify-end space-x-3 pt-4">
+                        <button type="button" id="cancelProfileEdit"
+                            class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md">
+                            Cancel
+                        </button>
+                        <button type="submit"
+                            class="px-4 py-2 text-sm font-medium text-white bg-admin-primary hover:bg-admin-secondary rounded-md">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+</html> 

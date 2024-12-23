@@ -7,6 +7,13 @@ const { sendEmail } = require('../config/email');
 const auth = require('../middleware/auth');
 const User = require('../models/User');
 
+// @route   GET api/auth/test
+// @desc    Test route
+// @access  Public
+router.get('/test', (req, res) => {
+    res.json({ msg: 'Backend is working!' });
+});
+
 // @route   POST api/auth/register
 // @desc    Register a user
 // @access  Public
